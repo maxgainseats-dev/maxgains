@@ -81,28 +81,36 @@ export default function OrderForm({
   // Existing active order
   if (existingTicket && existingTicket.status === "open") {
     return (
-      <div className="bg-neutral-900/95 border-2 border-orange-500/50 rounded-3xl p-10 shadow-2xl shadow-orange-500/25 w-full max-w-2xl mx-auto">
-        <div className="text-center mb-10">
-          <div className="w-20 h-20 glow-orange rounded-full flex items-center justify-center mx-auto mb-6 shadow-2xl shadow-orange-500/50">
-            <span className="text-3xl">⚡</span>
-          </div>
-          <h2 className="text-3xl font-black text-white mb-4">Active Order Found</h2>
-          <p className="text-gray-200 text-xl font-medium">
-            You have an active order. Continue with your existing chat or wait for completion.
-          </p>
-        </div>
+   <div className="bg-neutral-900/95 border-2 border-orange-500/50 rounded-3xl p-10 shadow-2xl shadow-orange-500/25 w-full max-w-2xl mx-auto">
+  <div className="text-center mb-10">
+    {/* ⚡ Clean glowing circle */}
+    <div className="w-20 h-20 bg-orange-500/20 rounded-full flex items-center justify-center mx-auto mb-6 glow-orange">
+      <span className="text-3xl text-white">⚡</span>
+    </div>
+
+    <h2 className="text-3xl font-black text-white mb-4">Active Order Found</h2>
+    <p className="text-gray-200 text-xl font-medium">
+      You have an active order. Continue with your existing chat or wait for completion.
+    </p>
+  </div>
 
         <div className="space-y-8">
-          <div className="bg-black/50 backdrop-blur-xl border border-orange-500/40 rounded-2xl p-8 glow-orange">
-            <div className="flex items-center space-x-4 text-orange-300 mb-4">
-              <div className="w-8 h-8 glow-orange rounded-full flex items-center justify-center shadow-lg shadow-orange-500/50">
-                <span className="text-white text-sm font-black">!</span>
-              </div>
-              <span className="font-black text-2xl text-white">Active Order</span>
-            </div>
-            <p className="text-orange-200 font-bold text-lg">Order ID: #{existingTicket.id.slice(-8)}</p>
-            <p className="text-orange-200 font-bold text-lg">Status: {existingTicket.status}</p>
-          </div>
+
+  <div className="bg-black/50 backdrop-blur-xl border border-orange-500/40 rounded-2xl p-8 glow-orange">
+    <div className="flex items-center space-x-4 text-orange-300 mb-4">
+ 
+      <div className="w-8 h-8 rounded-full flex items-center justify-center glow-orange">
+        <span className="text-orange-300 text-sm font-black">!</span>
+      </div>
+
+      <span className="font-black text-2xl text-white">Active Order</span>
+    </div>
+
+    <p className="text-orange-200 font-bold text-lg">Order ID: #{existingTicket.id.slice(-8)}</p>
+    <p className="text-orange-200 font-bold text-lg">Status: {existingTicket.status}</p>
+  </div>
+
+
 
           <button
             onClick={onContinueExisting}
@@ -125,16 +133,17 @@ export default function OrderForm({
   return (
     <div className="bg-neutral-900/95 border-2 border-orange-500/50 rounded-3xl p-4 lg:p-10 shadow-2xl shadow-orange-500/25 glow-orange w-full mx-auto">
       <div className="text-center mb-10">
-        <div className="w-20 h-20 glow-orange rounded-full flex items-center justify-center mx-auto mb-6 shadow-2xl shadow-orange-500/50">
-          <span className="text-3xl">🚀</span>
-        </div>
-        <h2 className="text-4xl font-black text-white mb-4">Start Saving Now</h2>
-        <p className="text-gray-200 text-xl font-medium">
-          {!user
-            ? "Sign in and paste your Uber Eats group order link below"
-            : "Paste your Uber Eats group order link below"}
-        </p>
-      </div>
+  <div className="w-20 h-20 bg-gradient-to-br from-orange-500/40 to-orange-700/30 rounded-full flex items-center justify-center mx-auto mb-6 glow-orange">
+    <span className="text-3xl text-white">🚀</span>
+  </div>
+  <h2 className="text-4xl font-black text-white mb-4">Start Saving Now</h2>
+  <p className="text-gray-200 text-xl font-medium">
+    {!user
+      ? "Sign in and paste your Uber Eats group order link below"
+      : "Paste your Uber Eats group order link below"}
+  </p>
+</div>
+
 
       <div className="space-y-8">
         {!user && serviceStatus.isOpen && (
@@ -173,24 +182,38 @@ export default function OrderForm({
   </div>
 )}
 
-        <div>
-          <label className="block text-xl font-black text-white mb-6">Group Order Link</label>
-          <div className="relative">
-            <input
-              type="url"
-              placeholder="https://ubereats.com/orders/..."
-              className="w-full bg-gray-800 border-2 border-gray-600 focus:border-orange-500 rounded-2xl px-6 py-6 text-white text-lg font-medium placeholder-gray-400 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-orange-500/25 pr-16"
-              value={link}
-              onChange={(e) => setLink(e.target.value)}
-              disabled={!user || !serviceStatus.isOpen || (!chatClosed && !!ticketId)}
-            />
-            <div className="absolute right-6 top-1/2 transform -translate-y-1/2">
-              <div className="w-8 h-8 glow-orange rounded-full flex items-center justify-center shadow-lg shadow-orange-500/50">
-                <span className="text-white text-sm">🔗</span>
-              </div>
-            </div>
-          </div>
-        </div>
+      <div>
+  <label className="block text-xl font-black text-white mb-6">Group Order Link</label>
+  <div className="relative">
+    <input
+      type="url"
+      placeholder="https://ubereats.com/orders/..."
+      className="w-full 
+    bg-black 
+    border-2 border-transparent 
+    rounded-2xl 
+    px-6 py-6 
+    text-white text-lg font-medium 
+    placeholder-gray-400 
+    transition-all duration-300 
+    focus:outline-none 
+    focus:border-orange-500 
+    focus:ring-4 focus:ring-orange-500/50 
+    focus:shadow-[0_0_20px_rgba(255,165,0,0.6)] 
+    pr-16"
+      value={link}
+      onChange={(e) => setLink(e.target.value)}
+      disabled={!user || !serviceStatus.isOpen || (!chatClosed && !!ticketId)}
+    />
+    <div className="absolute right-6 top-1/2 transform -translate-y-1/2">
+    
+      <div className="w-8 h-8 bg-gradient-to-br from-orange-500/40 to-orange-700/30 rounded-full flex items-center justify-center glow-orange">
+        <span className="text-white text-sm">🔗</span>
+      </div>
+    </div>
+  </div>
+</div>
+
 
         {/* Validation Result */}
         {validationResult && (

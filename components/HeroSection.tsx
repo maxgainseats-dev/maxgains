@@ -33,9 +33,7 @@ export default function HeroSection({
 
           <p className="text-lg sm:text-xl text-gray-400 mb-10 max-w-2xl leading-relaxed">{description}</p>
 
-<button className="gradient-orange-glow text-white font-black text-lg px-10 py-4 rounded-full transition-all duration-200 hover:scale-105 glow-orange-soft">
-  PLACE ORDER NOW
-</button>
+
         </div>
       </div>
     </section>

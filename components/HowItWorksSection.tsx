@@ -63,16 +63,19 @@ const defaultSteps: Step[] = [
 
 export default function HowItWorks({ steps = defaultSteps }: HowItWorksProps) {
   return (
-    <section className="py-18 px-4 sm:px-4 lg:px-6 bg-black">
-      <div className="">
+    <section className="py-18 px-4 sm:px-6 lg:px-8 bg-black">
+      <div className="max-w-6xl mx-auto"> {/* 👈 center container */}
         <div className="text-center mb-20">
-          <h2 className="text-4xl lg:text-5xl font-black gradient-orange-glow bg-clip-text text-transparent mb-6 text-balance text-glow-orange">
+          <h2 className="text-4xl lg:text-5xl font-black gradient-orange-glow bg-clip-text text-transparent mb-6 text-glow-orange">
             How It Works
           </h2>
-          <p className="text-xl text-gray-200 font-medium">Three simple steps to massive savings</p>
+          <p className="text-xl text-gray-200 font-medium">
+            Three simple steps to massive savings
+          </p>
         </div>
 
         <div className="grid md:grid-cols-3 gap-12 relative">
+          {/* connecting line */}
           <div className="hidden md:block absolute top-10 left-1/6 right-1/6 h-1 gradient-orange-glow rounded-full glow-orange"></div>
 
           {steps.map((step, idx) => (
@@ -87,6 +90,7 @@ export default function HowItWorks({ steps = defaultSteps }: HowItWorksProps) {
               <div className="mb-6 flex justify-center group-hover:scale-110 transition-transform duration-300">
                 {step.icon}
               </div>
+
               <h3 className="text-xl font-bold text-white mb-4">{step.title}</h3>
               <p className="text-gray-200 leading-relaxed">{step.description}</p>
             </div>

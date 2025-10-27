@@ -58,10 +58,10 @@ const defaultFeatures: Feature[] = [
 
 export default function Features({ features = defaultFeatures }: FeaturesProps) {
   return (
-    <section className="py-18 px-4 sm:px-4 lg:px-6 bg-black">
-      <div className="">
+    <section className="py-18 px-4 sm:px-6 lg:px-8 bg-black">
+      <div className="max-w-6xl mx-auto"> {/* 👈 centered container */}
         <div className="text-center mb-20">
-          <h2 className="text-4xl lg:text-5xl font-black gradient-orange-glow bg-clip-text text-transparent mb-6 text-balance text-glow-orange">
+          <h2 className="text-4xl lg:text-5xl font-black gradient-orange-glow bg-clip-text text-transparent mb-6 text-glow-orange">
             Why Choose MaxGains?
           </h2>
           <p className="text-xl lg:text-2xl text-gray-300 font-medium mb-12">
@@ -90,6 +90,7 @@ export default function Features({ features = defaultFeatures }: FeaturesProps) 
             </div>
           </div>
 
+          {/* Features Grid */}
           <div className="grid md:grid-cols-3 gap-8">
             {features.map((feature, idx) => (
               <div
