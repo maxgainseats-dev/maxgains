@@ -81,9 +81,9 @@ export default function OrderForm({
   // Existing active order
   if (existingTicket && existingTicket.status === "open") {
     return (
-      <div className="bg-neutral-900/95 border-2 border-orange-500/50 rounded-3xl p-10 shadow-2xl shadow-orange-500/25 w-full max-w-2xl mx-auto">
+      <div className="bg-black border-2 border-primary rounded-3xl p-10 glow-orange-strong w-full max-w-2xl mx-auto">
         <div className="text-center mb-10">
-          <div className="w-20 h-20 bg-gradient-to-r from-orange-400 via-red-500 to-pink-500 rounded-full flex items-center justify-center mx-auto mb-6 shadow-2xl shadow-orange-500/50">
+          <div className="w-20 h-20 gradient-orange-glow rounded-full flex items-center justify-center mx-auto mb-6 glow-orange-strong">
             <span className="text-3xl">⚡</span>
           </div>
           <h2 className="text-3xl font-black text-white mb-4">Active Order Found</h2>
@@ -93,20 +93,20 @@ export default function OrderForm({
         </div>
 
         <div className="space-y-8">
-          <div className="bg-gradient-to-r from-orange-400/20 via-red-500/20 to-pink-500/20 backdrop-blur-xl border border-orange-500/40 rounded-2xl p-8">
-            <div className="flex items-center space-x-4 text-orange-300 mb-4">
-              <div className="w-8 h-8 bg-gradient-to-r from-orange-400 via-red-500 to-pink-500 rounded-full flex items-center justify-center shadow-lg shadow-orange-500/50">
+          <div className="bg-black/50 border-2 border-primary/50 rounded-2xl p-8 glow-orange">
+            <div className="flex items-center space-x-4 text-primary mb-4">
+              <div className="w-8 h-8 gradient-orange-glow rounded-full flex items-center justify-center glow-orange">
                 <span className="text-white text-sm font-black">!</span>
               </div>
               <span className="font-black text-2xl text-white">Active Order</span>
             </div>
-            <p className="text-orange-200 font-bold text-lg">Order ID: #{existingTicket.id.slice(-8)}</p>
-            <p className="text-orange-200 font-bold text-lg">Status: {existingTicket.status}</p>
+            <p className="text-gray-200 font-bold text-lg">Order ID: #{existingTicket.id.slice(-8)}</p>
+            <p className="text-gray-200 font-bold text-lg">Status: {existingTicket.status}</p>
           </div>
 
           <button
             onClick={onContinueExisting}
-            className="w-full bg-gradient-to-r from-orange-400 via-red-300 to-pink-300 hover:from-orange-500 hover:via-red-300 hover:to-pink-600 text-white font-black text-xl py-6 px-8 rounded-2xl transition-all duration-300 shadow-2xl shadow-orange-500/25 hover:shadow-orange-500/75 hover:scale-105 flex items-center justify-center space-x-4"
+            className="w-full gradient-orange-glow text-white font-black text-xl py-6 px-8 rounded-2xl transition-all duration-300 hover:scale-105 glow-orange-strong flex items-center justify-center space-x-4"
           >
             <span>Continue Existing Chat</span>
             <div className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center">
@@ -123,12 +123,12 @@ export default function OrderForm({
   }
 
   return (
-    <div className="bg-neutral-900/95 border-2 border-red-400/50 rounded-3xl p-4 lg:p-10 shadow-2xl shadow-red-400/25 w-full mx-auto">
+    <div className="bg-black border-2 border-primary rounded-3xl p-4 lg:p-10 glow-orange-strong w-full mx-auto">
       <div className="text-center mb-10">
-        <div className="w-20 h-20 bg-gradient-to-r from-orange-400 via-red-500 to-pink-500 rounded-full flex items-center justify-center mx-auto mb-6 shadow-2xl shadow-orange-500/50">
+        <div className="w-20 h-20 gradient-orange-glow rounded-full flex items-center justify-center mx-auto mb-6 glow-orange-strong">
           <span className="text-3xl">🚀</span>
         </div>
-        <h2 className="text-4xl font-black text-white mb-4">Start Saving Now</h2>
+        <h2 className="text-4xl font-black text-white mb-4 text-glow-orange">Start Saving Now</h2>
         <p className="text-gray-200 text-xl font-medium">
           {!user
             ? "Sign in and paste your Uber Eats group order link below"
@@ -138,38 +138,38 @@ export default function OrderForm({
 
       <div className="space-y-8">
         {!user && serviceStatus.isOpen && (
-          <div className="bg-gradient-to-r from-orange-400/20 via-red-500/20 to-pink-500/20 backdrop-blur-xl border border-orange-500/40 rounded-2xl p-8">
-            <div className="flex items-center space-x-4 text-orange-300">
-              <div className="w-8 h-8 bg-gradient-to-r from-orange-400 via-red-500 to-pink-500 rounded-full flex items-center justify-center shadow-lg shadow-orange-500/50">
+          <div className="bg-black/50 border-2 border-primary/50 rounded-2xl p-8 glow-orange">
+            <div className="flex items-center space-x-4 text-primary">
+              <div className="w-8 h-8 gradient-orange-glow rounded-full flex items-center justify-center glow-orange">
                 <span className="text-white text-sm font-black">!</span>
               </div>
               <span className="font-black text-xl text-white">Sign in required</span>
             </div>
-            <p className="text-orange-200 font-medium text-lg mt-3">You must be signed in to create an order.</p>
+            <p className="text-gray-200 font-medium text-lg mt-3">You must be signed in to create an order.</p>
           </div>
         )}
 
         {!serviceStatus.isOpen && (
-          <div className="bg-gradient-to-r from-orange-400/20 via-red-500/20 to-pink-500/20 backdrop-blur-xl border border-orange-500/40 rounded-2xl p-8">
-            <div className="flex items-center space-x-4 text-orange-300">
-              <div className="w-8 h-8 bg-gradient-to-r from-orange-400 via-red-500 to-pink-500 rounded-full flex items-center justify-center shadow-lg shadow-orange-500/50">
+          <div className="bg-black/50 border-2 border-primary/50 rounded-2xl p-8 glow-orange">
+            <div className="flex items-center space-x-4 text-primary">
+              <div className="w-8 h-8 gradient-orange-glow rounded-full flex items-center justify-center glow-orange">
                 <span className="text-white text-sm font-black">×</span>
               </div>
               <span className="font-black text-xl text-white">Service Closed</span>
             </div>
-            <p className="text-orange-200 font-medium text-lg mt-3">{serviceStatus.message}</p>
+            <p className="text-gray-200 font-medium text-lg mt-3">{serviceStatus.message}</p>
           </div>
         )}
 
         {serviceStatus.isOpen && user && (
-          <div className="bg-gradient-to-r from-green-500/20 to-emerald-500/20 backdrop-blur-xl border border-green-500/40 rounded-2xl p-8">
-            <div className="flex items-center space-x-4 text-green-300">
-              <div className="w-8 h-8 bg-gradient-to-r from-green-400 to-emerald-500 rounded-full flex items-center justify-center shadow-lg shadow-green-500/50">
+          <div className="bg-black/50 border-2 border-accent/50 rounded-2xl p-8 shadow-lg shadow-accent/25">
+            <div className="flex items-center space-x-4 text-accent">
+              <div className="w-8 h-8 bg-accent rounded-full flex items-center justify-center shadow-lg shadow-accent/50">
                 <span className="text-white text-sm font-black">✓</span>
               </div>
               <span className="font-black text-xl text-white">Service Open!</span>
             </div>
-            <p className="text-green-200 font-medium text-lg mt-3">Get Ready to Eat! Service is Open!</p>
+            <p className="text-gray-200 font-medium text-lg mt-3">Get Ready to Eat! Service is Open!</p>
           </div>
         )}
 
@@ -179,13 +179,13 @@ export default function OrderForm({
             <input
               type="url"
               placeholder="https://ubereats.com/orders/..."
-              className="w-full bg-gray-800 border-2 border-gray-600 focus:border-orange-500 rounded-2xl px-6 py-6 text-white text-lg font-medium placeholder-gray-400 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-orange-500/25 pr-16"
+              className="w-full bg-black border-2 border-primary/50 focus:border-primary rounded-2xl px-6 py-6 text-white text-lg font-medium placeholder-gray-500 transition-all duration-300 focus:outline-none focus:glow-orange pr-16"
               value={link}
               onChange={(e) => setLink(e.target.value)}
               disabled={!user || !serviceStatus.isOpen || (!chatClosed && !!ticketId)}
             />
             <div className="absolute right-6 top-1/2 transform -translate-y-1/2">
-              <div className="w-8 h-8 bg-gradient-to-r from-orange-400 via-red-500 to-pink-500 rounded-full flex items-center justify-center shadow-lg shadow-orange-500/50">
+              <div className="w-8 h-8 gradient-orange-glow rounded-full flex items-center justify-center glow-orange">
                 <span className="text-white text-sm">🔗</span>
               </div>
             </div>
@@ -195,23 +195,23 @@ export default function OrderForm({
         {/* Validation Result */}
         {validationResult && (
           <div
-            className={`p-8 rounded-2xl backdrop-blur-xl ${
+            className={`p-8 rounded-2xl border-2 ${
               validationResult.error
-                ? "bg-gradient-to-r from-orange-400/20 via-red-500/20 to-pink-500/20 border border-orange-500/40"
-                : "bg-gradient-to-r from-green-400/20 to-emerald-500/20 border border-green-500/40"
+                ? "bg-black/50 border-primary/50 glow-orange"
+                : "bg-black/50 border-accent/50 shadow-lg shadow-accent/25"
             }`}
           >
             {validationResult.error ? (
-              <div className="flex items-center space-x-4 text-orange-300">
-                <div className="w-8 h-8 bg-gradient-to-r from-orange-400 via-red-500 to-pink-500 rounded-full flex items-center justify-center shadow-lg shadow-orange-500/50">
+              <div className="flex items-center space-x-4 text-primary">
+                <div className="w-8 h-8 gradient-orange-glow rounded-full flex items-center justify-center glow-orange">
                   <span className="text-white text-sm font-black">×</span>
                 </div>
                 <span className="font-bold text-xl text-white">{validationResult.error}</span>
               </div>
             ) : (
               <div className="space-y-6">
-                <div className="flex items-center space-x-4 text-green-300">
-                  <div className="w-8 h-8 bg-gradient-to-r from-green-400 to-emerald-500 rounded-full flex items-center justify-center shadow-lg shadow-green-500/50">
+                <div className="flex items-center space-x-4 text-accent">
+                  <div className="w-8 h-8 bg-accent rounded-full flex items-center justify-center shadow-lg shadow-accent/50">
                     <span className="text-white text-sm font-black">✓</span>
                   </div>
                   <span className="font-black text-2xl text-white">Valid group link detected!</span>
@@ -228,7 +228,7 @@ export default function OrderForm({
                 {validationResult.items && validationResult.items.length > 0 && (
                   <>
                     {subtotal >= 15 && subtotal <= 35 ? (
-                      <div className="bg-neutral-900/80 rounded-2xl p-8 space-y-6 border border-neutral-800/50">
+                      <div className="bg-black/80 rounded-2xl p-8 space-y-6 border-2 border-primary/30">
                         <h4 className="font-black text-white text-2xl">Order Summary</h4>
                         <div className="space-y-4">
                           {validationResult.items.map((item, idx) => (
@@ -239,7 +239,7 @@ export default function OrderForm({
                                     {item.quantity} × {item.title}
                                   </span>
                                   {item.isBogo && (
-                                    <span className="bg-gradient-to-r from-orange-400 via-red-500 to-pink-500 text-white text-xs px-3 py-1 rounded-full font-black shadow-lg shadow-orange-500/50">
+                                    <span className="gradient-orange-glow text-white text-xs px-3 py-1 rounded-full font-black glow-orange">
                                       BOGO
                                     </span>
                                   )}
@@ -255,21 +255,21 @@ export default function OrderForm({
                           ))}
                         </div>
 
-                        <div className="border-t border-gray-600/50 pt-6 space-y-3">
+                        <div className="border-t border-primary/30 pt-6 space-y-3">
                           <div className="flex justify-between text-lg">
                             <span className="text-gray-400 font-medium">Estimated Total (with fees & taxes):</span>
                             <span className="font-bold text-white">${(subtotal * 1.34).toFixed(2)}</span>
                           </div>
                           <div className="flex justify-between text-2xl font-black">
                             <span className="text-white">Your Price:</span>
-                            <span className="bg-gradient-to-r from-green-400 to-emerald-500 bg-clip-text text-transparent">
+                            <span className="gradient-orange-glow bg-clip-text text-transparent text-glow-orange">
                               ${validationResult.ourPrice?.toFixed(2)}
                             </span>
                           </div>
                         </div>
                       </div>
                     ) : (
-                      <div className="bg-gradient-to-r from-orange-400/20 via-red-500/20 to-pink-500/20 backdrop-blur-xl border border-orange-500/40 text-orange-200 p-6 rounded-2xl font-bold text-lg">
+                      <div className="bg-black/50 border-2 border-primary/50 text-gray-200 p-6 rounded-2xl font-bold text-lg glow-orange">
                         Cart value must be between $15 and 35. Please adjust your order.
                       </div>
                     )}
@@ -290,7 +290,7 @@ export default function OrderForm({
             !!validationResult.error ||
             isValidating
           }
-          className="w-full bg-gradient-to-r from-orange-400 via-red-500 to-pink-500 hover:from-orange-500 hover:via-red-600 hover:to-pink-600 disabled:from-gray-600 disabled:to-gray-700 text-white font-black text-xl py-6 px-8 rounded-2xl transition-all duration-300 shadow-2xl shadow-orange-500/25 hover:shadow-orange-500/75 hover:scale-105 disabled:hover:scale-100 disabled:shadow-none flex items-center justify-center space-x-4"
+          className="w-full gradient-orange-glow text-white font-black text-lg px-10 py-4 rounded-full transition-all duration-200 hover:scale-105 glow-orange-soft"
         >
           <span>
             {!user
@@ -318,11 +318,11 @@ export default function OrderForm({
           <div
             className={`w-4 h-4 rounded-full ${
               serviceStatus.isOpen
-                ? "bg-gradient-to-r from-green-400 to-emerald-500 animate-pulse shadow-lg shadow-green-500/50"
-                : "bg-gradient-to-r from-orange-400 via-red-500 to-pink-500 shadow-lg shadow-orange-500/50"
+                ? "bg-accent animate-pulse shadow-lg shadow-accent/50"
+                : "gradient-orange-glow glow-orange"
             }`}
           ></div>
-          <span className={`font-bold text-lg ${serviceStatus.isOpen ? "text-green-300" : "text-orange-300"}`}>
+          <span className={`font-bold text-lg ${serviceStatus.isOpen ? "text-accent" : "text-primary"}`}>
             {serviceStatus.message}
           </span>
         </div>

@@ -13,7 +13,7 @@ type HowItWorksProps = {
 const defaultSteps: Step[] = [
   {
     icon: (
-      <div className="w-20 h-20 bg-gradient-to-br from-orange-500 to-red-500 rounded-3xl flex items-center justify-center shadow-xl shadow-orange-500/30 group-hover:shadow-orange-500/50 transition-all duration-300">
+      <div className="w-20 h-20 gradient-orange-glow rounded-3xl flex items-center justify-center glow-orange group-hover:glow-orange-strong transition-all duration-300">
         <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path
             strokeLinecap="round"
@@ -29,7 +29,7 @@ const defaultSteps: Step[] = [
   },
   {
     icon: (
-      <div className="w-20 h-20 bg-gradient-to-br from-green-500 to-emerald-500 rounded-3xl flex items-center justify-center shadow-xl shadow-green-500/30 group-hover:shadow-green-500/50 transition-all duration-300">
+      <div className="w-20 h-20 gradient-orange-glow rounded-3xl flex items-center justify-center glow-orange group-hover:glow-orange-strong transition-all duration-300">
         <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path
             strokeLinecap="round"
@@ -45,7 +45,7 @@ const defaultSteps: Step[] = [
   },
   {
     icon: (
-      <div className="w-20 h-20 bg-gradient-to-br from-blue-500 to-purple-500 rounded-3xl flex items-center justify-center shadow-xl shadow-blue-500/30 group-hover:shadow-blue-500/50 transition-all duration-300">
+      <div className="w-20 h-20 gradient-orange-glow rounded-3xl flex items-center justify-center glow-orange group-hover:glow-orange-strong transition-all duration-300">
         <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path
             strokeLinecap="round"
@@ -66,21 +66,21 @@ export default function HowItWorks({ steps = defaultSteps }: HowItWorksProps) {
     <section className="py-18 px-4 sm:px-4 lg:px-6 bg-black">
       <div className="">
         <div className="text-center mb-20">
-          <h2 className="text-4xl lg:text-5xl font-bold bg-gradient-to-r from-orange-400 via-red-400 to-pink-400 bg-clip-text text-transparent mb-6 text-balance">
+          <h2 className="text-4xl lg:text-5xl font-black gradient-orange-glow bg-clip-text text-transparent mb-6 text-balance text-glow-orange">
             How It Works
           </h2>
           <p className="text-xl text-gray-200 font-medium">Three simple steps to massive savings</p>
         </div>
 
         <div className="grid md:grid-cols-3 gap-12 relative">
-          <div className="hidden md:block absolute top-10 left-1/6 right-1/6 h-1 bg-gradient-to-r from-orange-500/30 via-green-500/50 to-blue-500/30 rounded-full"></div>
+          <div className="hidden md:block absolute top-10 left-1/6 right-1/6 h-1 gradient-orange-glow rounded-full glow-orange"></div>
 
           {steps.map((step, idx) => (
             <div
               key={idx}
-              className="bg-neutral-900/80 border border-neutral-800/50 rounded-2xl p-8 text-center relative group hover:border-orange-500/50 hover:shadow-2xl hover:shadow-orange-500/20 transition-all duration-300 hover:scale-105"
+              className="bg-black border-2 border-primary/30 rounded-2xl p-8 text-center relative group hover:border-primary transition-all duration-300 hover:scale-105 glow-orange"
             >
-              <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 w-10 h-10 bg-gradient-to-r from-orange-500 to-red-500 text-white rounded-full flex items-center justify-center text-lg font-bold shadow-lg shadow-orange-500/30">
+              <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 w-10 h-10 gradient-orange-glow text-white rounded-full flex items-center justify-center text-lg font-bold glow-orange">
                 {idx + 1}
               </div>
 

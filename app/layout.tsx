@@ -6,8 +6,8 @@ import "./globals.css"
 import "../styles/globals.css"
 
 export const metadata: Metadata = {
-  title: "GrubSlash",
-  description: "Your Cart Slashed",
+  title: "MaxGains",
+  description: "Maximize Your Gains on Every Order",
   generator: "",
 }
 
@@ -27,8 +27,7 @@ html {
 }
         `}</style>
 
-       
-<link rel="icon" href="/slash.svg" type="image/svg+xml" />
+        <link rel="icon" href="/slash.svg" type="image/svg+xml" />
       </head>
       <body>{children}</body>
     </html>
