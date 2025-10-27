@@ -8,10 +8,10 @@ type HeroSectionProps = {
 }
 
 export default function HeroSection({
-  promoText = "Save up to 60% on delivery",
+  promoText = "Save up to 70% on delivery",
   headingTop = "SAVE ",
-  headingHighlight = "BIG",
-  description = "We help you slash prices on every meal while supporting local restaurants. No subscription fees, just pure savings.",
+  headingHighlight = "TO THE MAX",
+  description = "We assist you in lowering the cost of each meal while promoting nearby resturants. There are no subscription costs—just savings.",
 }: HeroSectionProps) {
   return (
     <section className="relative py-20 lg:py-32 px-4 sm:px-6 lg:px-8 bg-black">
@@ -26,9 +26,9 @@ export default function HeroSection({
             <span className="gradient-orange-glow bg-clip-text text-transparent text-glow-orange">
               {headingHighlight}
             </span>{" "}
-            ON <span className="gradient-orange-glow bg-clip-text text-transparent text-glow-orange">EVERY</span>
+            ON <span className="">EVERY</span>
             <br />
-            FOOD DELIVERY
+            <span className="gradient-orange-glow bg-clip-text text-transparent text-glow-orange">FOOD DELIVERY</span>
           </h1>
 
           <p className="text-lg sm:text-xl text-gray-400 mb-10 max-w-2xl leading-relaxed">{description}</p>
