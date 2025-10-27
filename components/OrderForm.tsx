@@ -251,7 +251,7 @@ export default function OrderForm({
 
                 {validationResult.items && validationResult.items.length > 0 && (
                   <>
-                    {subtotal >= 15 && subtotal <= 35 ? (
+                    {subtotal >= 15 && subtotal <= 30 ? (
                       <div className="bg-black/80 rounded-2xl p-8 space-y-6 border border-orange-500/40 glow-orange">
   {validationResult.items.map((item, index) => (
     <div key={index} className="flex justify-between items-center border-b border-orange-500/20 pb-4">
@@ -282,7 +282,7 @@ export default function OrderForm({
 
                     ) : (
                       <div className="bg-red-500/20 border border-orange-500/40 text-gray-200 p-6 rounded-2xl font-bold text-lg glow-orange">
-                        Cart value must be between $15 and 35. Please adjust your order.
+                        Cart value must be between $15 and 30. Please adjust your order.
                       </div>
                     )}
                   </>
