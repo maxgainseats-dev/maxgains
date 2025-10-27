@@ -14,7 +14,7 @@ export default function HeroSection({
   description = "We assist you in lowering the cost of each meal while promoting nearby resturants. There are no subscription costs—just savings.",
 }: HeroSectionProps) {
   return (
-    <section className="relative py-20 lg:py-32 px-4 sm:px-6 lg:px-8 bg-black">
+    <section className="relative py-20 lg:py-25 px-4 sm:px-6 lg:px-8 bg-black">
       <div className="max-w-7xl mx-auto">
         <div className="max-w-4xl">
           <div className="gradient-orange-glow text-white px-6 py-3 rounded-full text-center mb-8 inline-block font-bold glow-orange">
