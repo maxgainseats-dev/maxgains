@@ -41,7 +41,7 @@ export default function Navigation({
               FAQ
             </button>
             <a
-              href="https://discord.gg/bmBxFcrjgG"
+              href="https://discord.gg/aJzbRnPAP4"
               target="_blank"
               rel="noreferrer"
               className="text-gray-300 hover:text-primary font-medium transition-colors duration-200"
@@ -109,7 +109,7 @@ export default function Navigation({
                 FAQ
               </button>
               <a
-                href="https://discord.gg/bmBxFcrjgG"
+                href="https://discord.gg/aJzbRnPAP4"
                 target="_blank"
                 rel="noreferrer"
                 className="text-gray-300 hover:text-primary font-medium py-3 transition-colors"
