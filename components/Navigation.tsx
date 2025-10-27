@@ -128,14 +128,7 @@ export default function Navigation({
                     My Orders
                   </button>
                   <div className="flex flex-col space-y-4 pt-2">
-                    <div className="flex items-center space-x-3 p-3 bg-black/50 rounded-lg border border-primary/30">
-                      <img
-                        src={user.avatar || "/placeholder.svg?height=32&width=32"}
-                        alt={user.name}
-                        className="w-8 h-8 rounded-full"
-                      />
-                      <span className="text-sm font-medium text-white">{user.name}</span>
-                    </div>
+                    
                     <button
                       onClick={handleLogout}
                       className="text-left text-gray-300 hover:text-primary font-medium py-3 transition-colors"
