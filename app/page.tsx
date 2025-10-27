@@ -142,8 +142,8 @@ export default function App() {
 
   const handleUserLogin = useCallback((loggedInUser: User, session: any) => {
     setUser(loggedInUser)
-    localStorage.setItem("maxgains_user", JSON.stringify(loggedInUser))
-    localStorage.setItem("maxgains_session", session.access_token)
+    localStorage.setItem("grubslash_user", JSON.stringify(loggedInUser))
+    localStorage.setItem("grubslash_session", session.access_token)
     setShowAuthModal(false)
 
     // Check for existing tickets after login
@@ -182,7 +182,7 @@ export default function App() {
   )
 
   const validateAndRefreshSession = useCallback(async () => {
-    const savedSession = localStorage.getItem("maxgains_session")
+    const savedSession = localStorage.getItem("grubslash_session")
     if (!savedSession) {
       handleLogout()
       return false
@@ -213,8 +213,8 @@ export default function App() {
 
   const handleLogout = useCallback(async () => {
     setUser(null)
-    localStorage.removeItem("maxgains_user")
-    localStorage.removeItem("maxgains_session")
+    localStorage.removeItem("grubslash_user")
+    localStorage.removeItem("grubslash_session")
     localStorage.removeItem("chatSession")
     setTicketId(null)
     setMessages([])
@@ -261,8 +261,8 @@ export default function App() {
       }
 
       // Fetch user
-      const savedUser = localStorage.getItem("maxgains_user")
-      const savedSession = localStorage.getItem("maxgains_session")
+      const savedUser = localStorage.getItem("grubslash_user")
+      const savedSession = localStorage.getItem("grubslash_session")
 
       if (savedUser && savedSession) {
         const isValidSession = await validateAndRefreshSession()
@@ -272,8 +272,8 @@ export default function App() {
           checkExistingTickets(user.id, savedSession)
         }
       } else {
-        localStorage.removeItem("maxgains_user")
-        localStorage.removeItem("maxgains_session")
+        localStorage.removeItem("grubslash_user")
+        localStorage.removeItem("grubslash_session")
         setUser(null)
       }
     }
@@ -379,18 +379,20 @@ export default function App() {
     [BACKEND_URL],
   )
 
-  const validateGroupLink = useCallback(async (groupLink: string) => {
+  const validateGroupLink = useCallback(
+  async (groupLink: string) => {
     setIsValidating(true)
     setValidationResult(null)
 
     try {
-      const response = await fetch("/api/proxy-validate-group-link", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ groupLink, service: "UberEats" }),
-      })
+      const response = await fetch('/api/proxy-validate-group-link', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json',
+    'x-api-key': process.env.NEXT_PUBLIC_API_KEY || '', // Or hardcoded for now
+  },
+  body: JSON.stringify({ groupLink, service: 'UberEats' }),
+})
 
       // ✅ Handle 204 No Content
       if (response.status === 204) {
@@ -431,7 +433,10 @@ export default function App() {
     } finally {
       setIsValidating(false)
     }
-  }, [])
+  },
+  [], // No dependencies needed now that BACKEND_URL is removed
+)
+
 
   const handleSubmit = async () => {
     if (!user) {
@@ -449,7 +454,7 @@ export default function App() {
       return alert("Please wait for link validation to complete or enter a valid link.")
     }
 
-    const sessionToken = localStorage.getItem("maxgains_session")
+    const sessionToken = localStorage.getItem("grubslash_session")
 
     try {
       const res = await fetch(`${BACKEND_URL}/api/create-ticket`, {
@@ -630,9 +635,9 @@ export default function App() {
 
                   {/* Hero section - shows second on mobile, takes 2/5 on desktop */}
                   <div className="order-1 lg:order-1 lg:col-span-2 w-full max-w-full">
-                    <div className="relative w-full overflow-visible px-4 sm:px-6 lg:px-0">
-                      <HeroSection />
-                    </div>
+                   <div className="relative w-full overflow-visible px-4 sm:px-6 lg:px-0">
+  <HeroSection />
+</div>
                   </div>
                 </div>
               </div>
