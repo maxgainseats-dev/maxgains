@@ -44,8 +44,8 @@ export default function OrderHistory({ userId, onViewTicket, onBackToOrderForm }
     try {
       const response = await fetch(`${BACKEND_URL}/api/auth/validate-session`, {
         headers: {
-          Authorization: `Bearer ${sessionToken}`,
-        },
+          "Authorization": `Bearer ${sessionToken}`
+        }
       })
 
       if (!response.ok) {
@@ -62,10 +62,12 @@ export default function OrderHistory({ userId, onViewTicket, onBackToOrderForm }
     }
   }
 
+  
+
   const fetchTickets = async () => {
     setLoading(true)
     setError(null)
-
+    
     const isValidSession = await validateSession()
     if (!isValidSession) {
       setLoading(false)
@@ -77,8 +79,8 @@ export default function OrderHistory({ userId, onViewTicket, onBackToOrderForm }
     try {
       const response = await fetch(`${BACKEND_URL}/api/tickets/user/${userId}`, {
         headers: {
-          Authorization: `Bearer ${sessionToken}`,
-        },
+          "Authorization": `Bearer ${sessionToken}`
+        }
       })
       const data = await response.json()
 
@@ -136,20 +138,21 @@ export default function OrderHistory({ userId, onViewTicket, onBackToOrderForm }
     )
   }
 
-  const getStatusColor = (status: string) => {
-    switch (status) {
-      case "open":
-        return "bg-green-100 text-green-800"
-      case "completed":
-        return "bg-green-100 text-green-800"
-      case "closed":
-        return "bg-slate-200 text-slate-800"
-      case "deleted":
-        return "bg-red-100 text-red-800"
-      default:
-        return "bg-slate-200 text-slate-800"
-    }
+const getStatusColor = (status: string) => {
+  switch (status) {
+    case "open":
+      return "bg-green-100 text-green-800"
+    case "completed":
+      return "bg-blue-100 text-blue-800"
+    case "closed":
+      return "bg-slate-200 text-slate-800"
+    case "deleted":
+      return "bg-red-100 text-red-800"
+    default:
+      return "bg-slate-200 text-slate-800"
   }
+}
+
 
   const getStatusText = (status: string) => {
     switch (status) {
@@ -167,72 +170,75 @@ export default function OrderHistory({ userId, onViewTicket, onBackToOrderForm }
   }
 
   return (
-    <div className="max-w-4xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
-      <div className="flex justify-between items-center mb-8">
-        <h2 className="text-3xl font-bold bg-gradient-to-r from-orange-400 via-red-500 to-pink-500 bg-clip-text text-transparent">
-          My Order History
-        </h2>
-        <Button
-          onClick={onBackToOrderForm}
-          className="px-6 py-2 bg-gradient-to-r from-orange-500 to-red-500 text-white font-semibold rounded-lg hover:from-orange-600 hover:to-red-600 transition-all duration-200 shadow-lg shadow-orange-500/30 justify-center"
-        >
-          Back to New Order
-        </Button>
-      </div>
+ <div className="max-w-4xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+  <div className="flex justify-between items-center mb-8">
+    <h2 className="text-3xl font-bold bg-gradient-to-r from-orange-400 via-red-500 to-pink-500 bg-clip-text text-transparent">
+      My Order History
+    </h2>
+    <Button onClick={onBackToOrderForm} className="px-6 py-2 bg-gradient-to-r from-orange-500 to-red-500 text-white font-semibold rounded-lg hover:from-orange-600 hover:to-red-600 transition-all duration-200 shadow-lg shadow-orange-500/30 justify-center">
+      Back to New Order
+    </Button>
+  </div>
 
-      {tickets.length === 0 ? (
-        <div className="text-center p-8 bg-neutral-900/80 border border-neutral-800/50 rounded-2xl shadow-xl shadow-orange-500/20">
-          <p className="text-gray-200">You haven't placed any orders yet.</p>
-          <Button onClick={onBackToOrderForm} className="mt-4">
-            Start Your First Order
-          </Button>
-        </div>
-      ) : (
-        <div className="grid gap-6">
-          {tickets.map((ticket) => (
-            <Card
-              key={ticket.id}
-              className="bg-neutral-900/80 border border-neutral-800/50 rounded-2xl shadow-md hover:shadow-2xl transition-shadow p-6"
-            >
-              <CardHeader>
-                <CardTitle className="flex justify-between items-center text-white">
-                  <span>Order #{ticket.id.slice(-8)}</span>
-                  <span className={`text-sm font-medium px-3 py-1 rounded-full ${getStatusColor(ticket.status)}`}>
-                    {getStatusText(ticket.status)}
-                  </span>
-                </CardTitle>
-                <p className="text-sm text-slate-300">{format(new Date(ticket.created_at), "PPP p")}</p>
-              </CardHeader>
-
-              <CardContent className="space-y-2 text-slate-200">
-                {ticket.validation_data?.restaurantName && (
-                  <p>
-                    <span className="font-semibold">Restaurant:</span> {ticket.validation_data.restaurantName}
-                  </p>
-                )}
-                {ticket.validation_data?.ourPrice && (
-                  <p>
-                    <span className="font-semibold">Your Price:</span> ${ticket.validation_data.ourPrice.toFixed(2)}
-                  </p>
-                )}
-                {ticket.completion_link && (
-                  <p>
-                    <span className="font-semibold">Order Link:</span>{" "}
-                    <a
-                      href={ticket.completion_link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-orange-400 hover:underline"
-                    >
-                      View Order
-                    </a>
-                  </p>
-                )}
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-      )}
+  {tickets.length === 0 ? (
+    <div className="text-center p-8 bg-neutral-900/80 border border-neutral-800/50 rounded-2xl shadow-xl shadow-orange-500/20">
+      <p className="text-gray-200">You haven't placed any orders yet.</p>
+      <Button onClick={onBackToOrderForm} className="mt-4">
+        Start Your First Order
+      </Button>
     </div>
+  ) : (
+    <div className="grid gap-6">
+      {tickets.map((ticket) => (
+        <Card
+          key={ticket.id}
+          className="bg-neutral-900/80 border border-neutral-800/50 rounded-2xl shadow-md hover:shadow-2xl transition-shadow p-6"
+        >
+          <CardHeader>
+            <CardTitle className="flex justify-between items-center text-white">
+              <span>Order #{ticket.id.slice(-8)}</span>
+              <span
+                className={`text-sm font-medium px-3 py-1 rounded-full ${getStatusColor(
+                  ticket.status
+                )}`}
+              >
+                {getStatusText(ticket.status)}
+              </span>
+            </CardTitle>
+            <p className="text-sm text-slate-300">{format(new Date(ticket.created_at), "PPP p")}</p>
+          </CardHeader>
+
+          <CardContent className="space-y-2 text-slate-200">
+            {ticket.validation_data?.restaurantName && (
+              <p>
+                <span className="font-semibold">Restaurant:</span> {ticket.validation_data.restaurantName}
+              </p>
+            )}
+            {ticket.validation_data?.ourPrice && (
+              <p>
+                <span className="font-semibold">Your Price:</span> ${ticket.validation_data.ourPrice.toFixed(2)}
+              </p>
+            )}
+            {ticket.completion_link && (
+              <p>
+                <span className="font-semibold">Order Link:</span>{" "}
+                <a
+                  href={ticket.completion_link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-orange-400 hover:underline"
+                >
+                  View Order
+                </a>
+              </p>
+            )}
+          </CardContent>
+        </Card>
+      ))}
+    </div>
+  )}
+</div>
+
+
   )
 }
