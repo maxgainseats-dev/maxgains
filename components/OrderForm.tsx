@@ -229,7 +229,7 @@ export default function OrderForm({
                 <div className="w-8 h-8 glow-orange rounded-full flex items-center justify-center shadow-lg shadow-orange-500/50">
                   <span className="text-white text-sm font-black">×</span>
                 </div>
-                <span className="font-bold text-xl text-white">{validationResult.error}</span>
+                <span className="font-bold text-xl text-white">Hmm, something seems off with your group link. It might be invalid or from a store we don’t support yet. Please review the link or contact our support team — we’re happy to help!</span>
               </div>
             ) : (
               <div className="space-y-6">
