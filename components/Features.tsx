@@ -72,7 +72,7 @@ export default function Features({ features = defaultFeatures }: FeaturesProps) 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
             <div className="text-center">
               <div className="text-4xl font-black gradient-orange-glow bg-clip-text text-transparent mb-2 text-glow-orange">
-                60%
+                70%
               </div>
               <div className="text-gray-400 font-medium">Average Savings</div>
             </div>
