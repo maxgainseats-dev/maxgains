@@ -86,7 +86,7 @@ export default function ChatWindow({
           <div className="bg-neutral-800/95 text-white p-4 rounded-t-2xl flex items-center justify-between border-b border-neutral-800/50">
             <div className="flex items-center space-x-3">
               <div className="w-10 h-10 bg-neutral-700/80 rounded-lg flex items-center justify-center">
-                <span className="text-sm font-bold">G</span>
+                <span className="text-sm font-bold">M</span>
               </div>
               <div>
                 <div className="font-semibold">Support Chat</div>
