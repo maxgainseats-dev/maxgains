@@ -332,22 +332,38 @@ export default function OrderForm({
                           </div>
 
                           <div>
-                            <label className="block text-lg font-bold text-white mb-3">
-                              Payment Method <span className="text-orange-400">*</span>
-                            </label>
-                            <select
-                              className="w-full bg-neutral-900 border-2 border-orange-500/30 rounded-xl px-4 py-3 text-white text-base font-medium transition-all duration-300 focus:outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-500/50"
-                              value={paymentMethod}
-                              onChange={(e) => setPaymentMethod(e.target.value)}
-                            >
-                              <option value="">Select payment method</option>
-                              <option value="cash">Crypto</option>
-                              <option value="e-transfer">Cashapp</option>
-                              <option value="credit-card">Venmo Card</option>
-                              <option value="debit-card">Zelle</option>
-                              <option value="debit-card">Paypal</option>
-                            </select>
-                          </div>
+  <label className="block text-lg font-bold text-white mb-3">
+    Payment Method <span className="text-orange-400">*</span>
+  </label>
+  <div className="relative">
+    <select
+      className="w-full bg-neutral-900 border-2 border-orange-500/30 rounded-xl px-4 py-3 text-white text-base font-medium appearance-none transition-all duration-300 focus:outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-500/50"
+      value={paymentMethod}
+      onChange={(e) => setPaymentMethod(e.target.value)}
+    >
+      <option value="">Select payment method</option>
+      <option value="cash">Crypto</option>
+      <option value="e-transfer">Cashapp</option>
+      <option value="credit-card">Venmo</option>
+      <option value="debit-card">Zelle</option>
+      <option value="paypal">Paypal</option>
+    </select>
+
+    {/* Down arrow */}
+    <div className="pointer-events-none absolute inset-y-0 right-3 flex items-center">
+      <svg
+        className="w-5 h-5 text-orange-400"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+      </svg>
+    </div>
+  </div>
+</div>
+
                         </div>
                       </>
                     ) : (
