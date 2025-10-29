@@ -22,7 +22,7 @@ const defaultFAQs: FAQ[] = [
   },
   {
     question: "What payment methods do you accept?",
-    answer: "We support E-Transfer, Crypto, Paypal, Cashapp.",
+    answer: "We support Venmo, Zelle, Crypto, Paypal, Cashapp.",
   },
   {
     question: "Who pays for the order",

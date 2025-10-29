@@ -5,6 +5,7 @@ import { useEffect, useRef } from "react"
 type Message = {
   from: "user" | "agent" | "system"
   content: string
+  sender?: string
 }
 
 type ChatWindowProps = {
@@ -52,6 +53,11 @@ export default function ChatWindow({
   }, [messages, showChat])
 
   const renderMessageContent = (content: string) => {
+    if (!content || typeof content !== "string") {
+      return "Message content unavailable"
+    }
+
+    console.log(content)
     const urlRegex = /(https?:\/\/[^\s]+)/g
     const parts = content.split(urlRegex)
 
@@ -113,16 +119,22 @@ export default function ChatWindow({
           <div ref={messagesContainerRef} className="flex-1 p-4 space-y-3 overflow-y-auto bg-neutral-900/90 max-h-80">
             {messages.map((msg, idx) => (
               <div key={idx} className={`flex ${msg.from === "user" ? "justify-end" : "justify-start"}`}>
-                <div
-                  className={`max-w-xs px-4 py-2 rounded-lg ${
-                    msg.from === "agent"
-                      ? "bg-neutral-800/80 text-gray-200 border border-neutral-700/50"
-                      : msg.from === "user"
-                        ? "bg-gradient-to-r from-orange-400 via-red-500 to-pink-500 text-white"
-                        : "bg-neutral-700/50 text-gray-300 text-center border border-neutral-700/50"
-                  }`}
-                >
-                  {renderMessageContent(msg.content)}
+                <div className="flex flex-col max-w-xs">
+                  {msg.from === "agent" && msg.sender && (
+                    <span className="text-xs text-gray-400 mb-1 ml-1">{msg.sender}</span>
+                  )}
+
+                  <div
+                    className={`px-4 py-2 rounded-lg ${
+                      msg.from === "agent"
+                        ? "bg-neutral-800/80 text-gray-200 border border-neutral-700/50"
+                        : msg.from === "user"
+                          ? "bg-gradient-to-r from-orange-400 via-red-500 to-pink-500 text-white"
+                          : "bg-neutral-700/50 text-gray-300 text-center border border-neutral-700/50"
+                    }`}
+                  >
+                    {msg.content ? renderMessageContent(msg.content) : "Message content unavailable"}
+                  </div>
                 </div>
               </div>
             ))}

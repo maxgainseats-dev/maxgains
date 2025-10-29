@@ -28,6 +28,7 @@ type User = {
 type Message = {
   from: "user" | "agent" | "system"
   content: string
+  sender?: string
 }
 
 type ValidationResult = {
@@ -311,8 +312,9 @@ export default function App() {
         socket.emit("joinTicket", id)
       })
 
-      socket.on("agentMessage", (content: string) => {
-        setMessages((prev) => [...prev, { from: "agent", content }])
+      socket.on("agentMessage", (data: { sender?: string; content: string }) => {
+        const senderName = data.sender || "Agent"
+        setMessages((prev) => [...prev, { from: "agent", content: data.content, sender: senderName }])
       })
 
       socket.on("userMessage", (content: string) => {
@@ -380,65 +382,69 @@ export default function App() {
   )
 
   const validateGroupLink = useCallback(
-  async (groupLink: string) => {
-    setIsValidating(true)
-    setValidationResult(null)
+    async (groupLink: string) => {
+      setIsValidating(true)
+      setValidationResult(null)
 
-    try {
-      const response = await fetch('/api/proxy-validate-group-link', {
-  method: 'POST',
-  headers: {
-    'Content-Type': 'application/json',
-    'x-api-key': process.env.NEXT_PUBLIC_API_KEY || '', // Or hardcoded for now
-  },
-  body: JSON.stringify({ groupLink, service: 'UberEats' }),
-})
+      try {
+        const response = await fetch("/api/proxy-validate-group-link", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "x-api-key": process.env.NEXT_PUBLIC_API_KEY || "", // Or hardcoded for now
+          },
+          body: JSON.stringify({ groupLink, service: "UberEats" }),
+        })
 
-      // ✅ Handle 204 No Content
-      if (response.status === 204) {
-        const result = {
-          success: true,
-          message: "No content returned (204)",
+        // ✅ Handle 204 No Content
+        if (response.status === 204) {
+          const result = {
+            success: true,
+            message: "No content returned (204)",
+          }
+          setValidationResult(result)
+          return result
         }
-        setValidationResult(result)
-        return result
-      }
 
-      // ✅ Handle 503
-      if (response.status === 503) {
+        // ✅ Handle 503
+        if (response.status === 503) {
+          const data = await response.json()
+          const result = {
+            error: data.error || "Service is currently closed",
+          }
+          setValidationResult(result)
+          return null
+        }
+
+        // ❌ Handle other errors
+        if (!response.ok) {
+          const errorText = await response.text()
+          throw new Error(`HTTP ${response.status}: ${errorText}`)
+        }
+
+        // ✅ Handle 200 OK
         const data = await response.json()
-        const result = {
-          error: data.error || "Service is currently closed",
-        }
-        setValidationResult(result)
+        setValidationResult(data)
+        return data
+      } catch (error: any) {
+        console.error("Error validating group link:", error)
+        setValidationResult({
+          error: error.message || "Failed to validate link. Please try again.",
+        })
         return null
+      } finally {
+        setIsValidating(false)
       }
+    },
+    [], // No dependencies needed now that BACKEND_URL is removed
+  )
 
-      // ❌ Handle other errors
-      if (!response.ok) {
-        const errorText = await response.text()
-        throw new Error(`HTTP ${response.status}: ${errorText}`)
-      }
-
-      // ✅ Handle 200 OK
-      const data = await response.json()
-      setValidationResult(data)
-      return data
-    } catch (error: any) {
-      console.error("Error validating group link:", error)
-      setValidationResult({
-        error: error.message || "Failed to validate link. Please try again.",
-      })
-      return null
-    } finally {
-      setIsValidating(false)
-    }
-  },
-  [], // No dependencies needed now that BACKEND_URL is removed
-)
-
-
-  const handleSubmit = async () => {
+  const handleSubmit = async (customerData?: {
+    username: string
+    address: string
+    deliveryNotes: string
+    paymentMethod: string
+  }) => {
     if (!user) {
       setShowAuthModal(true)
       return
@@ -466,6 +472,7 @@ export default function App() {
         body: JSON.stringify({
           link,
           validationData: validationResult,
+          customerData, // Pass customer data to backend
         }),
       })
 
@@ -481,12 +488,7 @@ export default function App() {
         setChatClosed(false)
         setTicketStatus("open")
         localStorage.setItem("chatSession", JSON.stringify({ ticketId: data.ticketId }))
-        setMessages([
-          {
-            from: "agent",
-            content: "Thanks for your link! We should be working on it in a few minutes!",
-          },
-        ])
+        setMessages([])
         connectToChat(data.ticketId, true)
         setShowChat(true)
         setExistingTicket({ id: data.ticketId, status: "open" })
@@ -635,9 +637,9 @@ export default function App() {
 
                   {/* Hero section - shows second on mobile, takes 2/5 on desktop */}
                   <div className="order-1 lg:order-1 lg:col-span-2 w-full max-w-full">
-                   <div className="relative w-full overflow-visible px-4 sm:px-6 lg:px-0">
-  <HeroSection />
-</div>
+                    <div className="relative w-full overflow-visible px-4 sm:px-6 lg:px-0">
+                      <HeroSection />
+                    </div>
                   </div>
                 </div>
               </div>
