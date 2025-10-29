@@ -282,7 +282,7 @@ export default function OrderForm({
 
                     ) : (
                       <div className="bg-red-500/20 border border-orange-500/40 text-gray-200 p-6 rounded-2xl font-bold text-lg glow-orange">
-                        Cart value must be between $15 and 30. Please adjust your order.
+                        Cart value must be between $15 and $30. Please adjust your order.
                       </div>
                     )}
                   </>
