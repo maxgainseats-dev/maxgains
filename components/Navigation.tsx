@@ -35,7 +35,7 @@ export default function Navigation({
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-6">
           <button
-  onClick={() => window.open("https://www.youtube.com/watch?v=6jihUbcXqjA", "_blank")}
+  onClick={() => window.open("https://vimeo.com/1131848073?share=copy&fl=sv&fe=ci", "_blank")}
   className="text-gray-300 hover:text-primary font-medium transition-colors duration-200"
 >
   How to Order
@@ -110,7 +110,7 @@ export default function Navigation({
           <div className="md:hidden py-6 border-t border-primary/30">
             <div className="flex flex-col space-y-4">
                    <button
-  onClick={() => window.open("https://www.youtube.com/watch?v=6jihUbcXqjA", "_blank")}
+  onClick={() => window.open("https://vimeo.com/1131848073?share=copy&fl=sv&fe=ci", "_blank")}
   className="text-left text-gray-300 hover:text-primary font-medium py-3 transition-colors"
 >
   How to Order
