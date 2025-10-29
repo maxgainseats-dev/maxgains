@@ -342,11 +342,11 @@ export default function OrderForm({
       onChange={(e) => setPaymentMethod(e.target.value)}
     >
       <option value="">Select payment method</option>
-      <option value="cash">Crypto</option>
-      <option value="e-transfer">Cashapp</option>
-      <option value="credit-card">Venmo</option>
-      <option value="debit-card">Zelle</option>
-      <option value="paypal">Paypal</option>
+      <option value="Crypto">Crypto</option>
+      <option value="e-Cashapp">Cashapp</option>
+      <option value="Venmo">Venmo</option>
+      <option value="Zelle">Zelle</option>
+      <option value="Paypal">Paypal</option>
     </select>
 
     {/* Down arrow */}
