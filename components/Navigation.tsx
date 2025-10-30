@@ -1,19 +1,20 @@
-"use client"
+"use client";
+import Link from "next/link";
 
 type User = {
-  name: string
-  avatar?: string
-}
+  name: string;
+  avatar?: string;
+};
 
 type NavigationProps = {
-  user: User | null
-  setShowAuthModal: (show: boolean) => void
-  mobileMenuOpen: boolean
-  toggleMobileMenu: () => void
-  openFAQModal: () => void
-  handleLogout: () => void
-  setViewMode: (mode: "orderForm" | "orderHistory") => void | Promise<void>
-}
+  user: User | null;
+  setShowAuthModal: (show: boolean) => void;
+  mobileMenuOpen: boolean;
+  toggleMobileMenu: () => void;
+  openFAQModal: () => void;
+  handleLogout: () => void;
+  setViewMode: (mode: "orderForm" | "orderHistory") => void | Promise<void>;
+};
 
 export default function Navigation({
   user,
@@ -28,18 +29,26 @@ export default function Navigation({
     <nav className="sticky top-0 z-50 bg-black/95 backdrop-blur-xl border-b-2 border-primary/30 glow-orange">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
-          <div className="flex items-center">
-            <span className="text-2xl font-black gradient-orange-glow bg-clip-text text-transparent">MaxGains</span>
+          <div
+            onClick={() => setViewMode("orderForm")}
+            className="cursor-pointer text-2xl font-black gradient-orange-glow bg-clip-text text-transparent"
+          >
+            MaxGains
           </div>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-6">
-          <button
-  onClick={() => window.open("https://vimeo.com/1131848073?share=copy&fl=sv&fe=ci", "_blank")}
-  className="text-gray-300 hover:text-primary font-medium transition-colors duration-200"
->
-  How to Order
-</button>
+            <button
+              onClick={() =>
+                window.open(
+                  "https://vimeo.com/1131848073?share=copy&fl=sv&fe=ci",
+                  "_blank"
+                )
+              }
+              className="text-gray-300 hover:text-primary font-medium transition-colors duration-200"
+            >
+              How to Order
+            </button>
 
             <button
               onClick={openFAQModal}
@@ -75,7 +84,9 @@ export default function Navigation({
                       alt={user.name}
                       className="w-8 h-8 rounded-full"
                     />
-                    <span className="text-sm font-medium text-white">{user.name}</span>
+                    <span className="text-sm font-medium text-white">
+                      {user.name}
+                    </span>
                   </div>
                   <button
                     onClick={handleLogout}
@@ -96,7 +107,10 @@ export default function Navigation({
           </div>
 
           {/* Mobile menu button */}
-          <button onClick={toggleMobileMenu} className="md:hidden p-2 rounded-lg hover:bg-primary/10 transition-colors">
+          <button
+            onClick={toggleMobileMenu}
+            className="md:hidden p-2 rounded-lg hover:bg-primary/10 transition-colors"
+          >
             <div className="w-6 h-6 flex flex-col justify-center space-y-1.5">
               <span className="w-full h-0.5 bg-primary rounded-full"></span>
               <span className="w-full h-0.5 bg-primary rounded-full"></span>
@@ -109,12 +123,17 @@ export default function Navigation({
         {mobileMenuOpen && (
           <div className="md:hidden py-6 border-t border-primary/30">
             <div className="flex flex-col space-y-4">
-                   <button
-  onClick={() => window.open("https://vimeo.com/1131848073?share=copy&fl=sv&fe=ci", "_blank")}
-  className="text-left text-gray-300 hover:text-primary font-medium py-3 transition-colors"
->
-  How to Order
-</button>
+              <button
+                onClick={() =>
+                  window.open(
+                    "https://vimeo.com/1131848073?share=copy&fl=sv&fe=ci",
+                    "_blank"
+                  )
+                }
+                className="text-left text-gray-300 hover:text-primary font-medium py-3 transition-colors"
+              >
+                How to Order
+              </button>
               <button
                 onClick={openFAQModal}
                 className="text-left text-gray-300 hover:text-primary font-medium py-3 transition-colors"
@@ -133,15 +152,14 @@ export default function Navigation({
                 <>
                   <button
                     onClick={() => {
-                      setViewMode("orderHistory")
-                      toggleMobileMenu()
+                      setViewMode("orderHistory");
+                      toggleMobileMenu();
                     }}
                     className="text-left text-gray-300 hover:text-primary font-medium py-3 transition-colors"
                   >
                     My Orders
                   </button>
                   <div className="flex flex-col space-y-4 pt-2">
-                    
                     <button
                       onClick={handleLogout}
                       className="text-left text-gray-300 hover:text-primary font-medium py-3 transition-colors"
@@ -153,8 +171,8 @@ export default function Navigation({
               ) : (
                 <button
                   onClick={() => {
-                    setShowAuthModal(true)
-                    toggleMobileMenu()
+                    setShowAuthModal(true);
+                    toggleMobileMenu();
                   }}
                   className="px-6 py-2 gradient-orange-glow text-white font-bold rounded-full transition-all duration-200 w-full glow-orange"
                 >
@@ -166,5 +184,5 @@ export default function Navigation({
         )}
       </div>
     </nav>
-  )
+  );
 }
