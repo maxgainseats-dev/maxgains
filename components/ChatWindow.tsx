@@ -87,8 +87,17 @@ export default function ChatWindow({
   return (
     <>
       {showChat && (
-        <div className="fixed bottom-4 right-4 w-96 max-w-[calc(100vw-2rem)] rounded-2xl shadow-2xl shadow-pink-500/25 z-50 flex flex-col overflow-hidden bg-neutral-900/95 backdrop-blur-xl">
-          {/* Header */}
+        <div
+  className="
+    fixed bottom-4 right-4
+    w-80 sm:w-96 lg:w-[500px] xl:w-[600px]
+    lg:h-[700px]
+    max-w-[calc(100vw-2rem)]
+    rounded-2xl shadow-2xl shadow-pink-500/25
+    z-50 flex flex-col overflow-hidden
+    bg-neutral-900/95 backdrop-blur-xl
+  "
+>  {/* Header */}
           <div className="bg-neutral-800/95 text-white p-4 rounded-t-2xl flex items-center justify-between border-b border-neutral-800/50">
             <div className="flex items-center space-x-3">
               <div className="w-10 h-10 bg-neutral-700/80 rounded-lg flex items-center justify-center">
@@ -116,7 +125,7 @@ export default function ChatWindow({
           </div>
 
           {/* Messages */}
-          <div ref={messagesContainerRef} className="flex-1 p-4 space-y-3 overflow-y-auto bg-neutral-900/90 max-h-80">
+          <div ref={messagesContainerRef} className="flex-1 p-4 space-y-3 overflow-y-auto bg-neutral-900/90 max-h-90">
             {messages.map((msg, idx) => (
               <div key={idx} className={`flex ${msg.from === "user" ? "justify-end" : "justify-start"}`}>
                 <div className="flex flex-col max-w-xs">
@@ -179,7 +188,7 @@ export default function ChatWindow({
       {!showChat && !chatClosed && ticketStatus === "open" && (
         <button
           onClick={handleOpenChat}
-          className="fixed bottom-4 right-4 w-14 h-14 rounded-full shadow-lg shadow-pink-500/30 hover:shadow-xl hover:shadow-pink-500/50 transition-all duration-200 flex items-center justify-center z-40 hover:scale-105 bg-gradient-to-r from-orange-400 via-red-500 to-pink-500 text-white"
+          className="fixed bottom-4 right-4 w-[4.5rem] h-[4.5rem] rounded-full shadow-lg shadow-pink-500/30 hover:shadow-xl hover:shadow-pink-500/50 transition-all duration-200 flex items-center justify-center z-40 hover:scale-105 bg-gradient-to-r from-orange-400 via-red-500 to-pink-500 text-white"
         >
           <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path
