@@ -90,8 +90,9 @@ export default function ChatWindow({
         <div
   className="
     fixed bottom-4 right-4
-    w-80 sm:w-96 lg:w-[500px] xl:w-[600px]
+    w-[525px] sm:w-[100px] lg:w-[500px] xl:w-[600px]
     lg:h-[700px]
+    h-[550px]
     max-w-[calc(100vw-2rem)]
     rounded-2xl shadow-2xl shadow-pink-500/25
     z-50 flex flex-col overflow-hidden
