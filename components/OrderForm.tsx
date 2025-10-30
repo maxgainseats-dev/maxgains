@@ -343,7 +343,7 @@ export default function OrderForm({
     >
       <option value="">Select payment method</option>
       <option value="Crypto">Crypto</option>
-      <option value="e-Cashapp">Cashapp</option>
+      <option value="Cashapp">Cashapp</option>
       <option value="Venmo">Venmo</option>
       <option value="Zelle">Zelle</option>
       <option value="Paypal">Paypal</option>
